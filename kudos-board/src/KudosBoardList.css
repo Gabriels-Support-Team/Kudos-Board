@@ -1,0 +1,14 @@
+.KudosBoardList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* Allows wrapping of cards if the container is too small */
+  gap: 16px; /* Adds space between cards */
+  padding-left: 100px;
+  padding-right: 100px;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+
+.checkBoxContainer {
+  margin-top: 10px;
+}
