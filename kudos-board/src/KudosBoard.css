@@ -1,8 +1,15 @@
 .KudosBoard {
-  border: 1px solid #ccc;
+  border: none;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 21%;
   padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out;
+}
+.KudosBoard:hover {
+  scale: 1.05;
 }
 
 .CardImage {

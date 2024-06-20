@@ -1,25 +1,22 @@
 import React from "react";
 import "./Query.css";
-function Query() {
+function Query({ setSearchTerm, setCategory }) {
   return (
-    <div className="Searchbar">
+    <div className="sortAndFilter">
       <input
         type="text"
-        value="{searchQuery}"
-        onChange="{handleSearchChange}"
+        onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search"
         className="searchBar"
       />
-      <button
-        // onClick={() => submitSearch(searchQuery)}
-        className="button-common category-button"
-      >
-        Search🔍
-      </button>
+
       <div className="filters">
         <button
           // onClick={() => submitSearch(searchQuery)}
           className="button-common category-button"
+          onClick={() => {
+            setCategory("");
+          }}
         >
           All
         </button>
@@ -32,29 +29,31 @@ function Query() {
         <button
           // onClick={() => submitSearch(searchQuery)}
           className="button-common category-button"
+          onClick={() => {
+            setCategory("Celebration");
+          }}
         >
           Celebration
         </button>
         <button
           // onClick={() => submitSearch(searchQuery)}
           className="button-common category-button"
+          onClick={() => {
+            setCategory("Thank you");
+          }}
         >
           Thank you
         </button>
         <button
           // onClick={() => submitSearch(searchQuery)}
           className="button-common category-button"
+          onClick={() => {
+            setCategory("Inspiration");
+          }}
         >
-          Celebration
+          Inspiration
         </button>
-        <div className="center-button-container">
-          <button
-            // onClick={() => submitSearch(searchQuery)}
-            className="button-common category-button"
-          >
-            Create New Board
-          </button>
-        </div>
+        <div className="center-button-container"></div>
       </div>
     </div>
   );
