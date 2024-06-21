@@ -1,19 +1,22 @@
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import HomePage from "./HomePage";
+import BoardDetails from "./BoardDetails";
 import "./App.css";
 import Header from "./header";
-import Query from "./Query";
-import KudosBoardlist from "./KudosBoardList";
-import React, { useState } from "react";
-function App() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [category, setCategory] = useState("");
 
+function App() {
   return (
-    <div className="App">
+    <div>
       <header className="App-header">
         <Header></Header>
       </header>
-      <Query setSearchTerm={setSearchTerm} setCategory={setCategory} />
-      <KudosBoardlist searchTerm={searchTerm} category={category} />
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/boards/:id" element={<BoardDetails />} />
+        </Routes>
+      </Router>
       <footer className="footer">© 2024 Gabriel Alvarado</footer>
     </div>
   );

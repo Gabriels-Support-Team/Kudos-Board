@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./KudosBoard.css";
+import { Link } from "react-router-dom";
 
 function KudosBoard({
   boardId,
@@ -8,7 +9,7 @@ function KudosBoard({
   boardImageURL,
   onDeleteBoard,
 }) {
-  const handleSubmit = async (event) => {
+  const deleteBoard = async (event) => {
     event.preventDefault();
 
     try {
@@ -27,14 +28,16 @@ function KudosBoard({
       console.error("Failed to delete board:", error);
     }
   };
+
   return (
     <div className="KudosBoard">
       <img className="CardImage" src={boardImageURL}></img>
-
       <h3>{boardTitle}</h3>
-
       <p>{boardCategory}</p>
-      <button onClick={handleSubmit}>delete</button>
+      <button onClick={deleteBoard}>delete</button>
+      <Link to={`/boards/${boardId}`}>
+        <button>View Details</button>
+      </Link>{" "}
     </div>
   );
 }

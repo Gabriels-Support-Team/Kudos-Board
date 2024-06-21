@@ -1,0 +1,16 @@
+.BoardDetails {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* Allows wrapping of cards if the container is too small */
+  gap: 16px; /* Adds space between cards */
+  padding-left: 10%;
+  padding-right: 10%;
+  justify-content: flex-start;
+  padding-top: 20px;
+}
