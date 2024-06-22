@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./KudosCard.css";
-
+import CommentForm from "./CommentForm";
 function KudosCard({
   card,
   cardId,
@@ -50,13 +50,26 @@ function KudosCard({
 
   return (
     <div className="kudosCard">
-      {/* <img className="CardImage" src={boardImageURL}></img> */}
       <h3>{cardTitle}</h3>
       <p>{cardDescription}</p>
+      <img className="gifURL" src={cardGifURL}></img>
       <p>{cardOwner}</p>
-      <button onClick={deleteCard}>delete</button>
+      <button onClick={deleteCard}>Delete</button>
       <button onClick={handleUpvote}>Upvote</button>
       <p>Upvotes: {card.upvotes}</p>
+      <CommentForm cardId={cardId} onDeleteCard={onDeleteCard} />
+      <div>
+        <h4>Comments:</h4>
+        {card.comments.length > 0 ? (
+          <ul>
+            {card.comments.map((comment, index) => (
+              <li key={index}>{comment}</li>
+            ))}
+          </ul>
+        ) : (
+          <p>No comments yet.</p>
+        )}
+      </div>
     </div>
   );
 }

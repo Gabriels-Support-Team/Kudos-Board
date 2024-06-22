@@ -8,6 +8,7 @@ function KudosBoard({
   boardTitle,
   boardImageURL,
   onDeleteBoard,
+  boardAuthor,
 }) {
   const deleteBoard = async (event) => {
     event.preventDefault();
@@ -34,10 +35,15 @@ function KudosBoard({
       <img className="CardImage" src={boardImageURL}></img>
       <h3>{boardTitle}</h3>
       <p>{boardCategory}</p>
-      <button onClick={deleteBoard}>delete</button>
-      <Link to={`/boards/${boardId}`}>
-        <button>View Details</button>
-      </Link>{" "}
+      <p>{boardAuthor}</p>
+      <div className="buttonContainer">
+        <Link to={`/boards/${boardId}`}>
+          <button className="button-common view-board">View Board</button>
+        </Link>{" "}
+        <button className="button-common delete-board" onClick={deleteBoard}>
+          Delete Board
+        </button>
+      </div>
     </div>
   );
 }

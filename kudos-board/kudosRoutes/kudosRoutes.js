@@ -7,6 +7,9 @@ router.get("/boards/:boardId/cards", async (req, res) => {
   try {
     const cards = await prisma.card.findMany({
       where: { boardId: parseInt(boardId) },
+      orderBy: {
+        id: "asc",
+      },
     });
     res.json(cards);
   } catch (error) {
@@ -14,7 +17,7 @@ router.get("/boards/:boardId/cards", async (req, res) => {
   }
 });
 router.get("/boards/", async (req, res) => {
-  const { category } = req.query;
+  const { category, sortBy, sortOrder } = req.query;
   let queryOptions = {};
   if (category) {
     queryOptions.where = {
@@ -22,6 +25,11 @@ router.get("/boards/", async (req, res) => {
         startsWith: category,
         mode: "insensitive", // Case insensitive matching
       },
+    };
+  }
+  if (sortBy) {
+    queryOptions.orderBy = {
+      id: sortBy,
     };
   }
   const Boards = await prisma.board.findMany(queryOptions);
@@ -32,13 +40,13 @@ router.get("/cards", async (req, res) => {
   res.json(Cards);
 });
 router.post("/boards", async (req, res) => {
-  const { title, category, imageURL } = req.body;
+  const { title, category, author } = req.body;
   try {
     const newBoard = await prisma.board.create({
       data: {
         title,
         category,
-        imageURL,
+        author,
       },
     });
     res.status(201).json(newBoard);
@@ -110,4 +118,26 @@ router.post("/cards/:cardId/upvote", async (req, res) => {
     res.status(500).json({ error: "Failed to upvote card" });
   }
 });
+router.post("/cards/:cardId/comments", async (req, res) => {
+  const { cardId } = req.params;
+  const { comment } = req.body;
+  prisma.card
+    .update({
+      where: { id: parseInt(cardId) },
+      data: {
+        comments: {
+          push: comment,
+        },
+      },
+    })
+    .then((card) => {
+      res.status(200).json(card);
+    })
+    .catch((error) => {
+      res
+        .status(500)
+        .json({ error: `Failed to add comment: ${error.message}` });
+    });
+});
+
 module.exports = router;

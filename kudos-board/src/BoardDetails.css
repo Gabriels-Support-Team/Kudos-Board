@@ -7,10 +7,37 @@
 .cardContainer {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap; /* Allows wrapping of cards if the container is too small */
-  gap: 16px; /* Adds space between cards */
+  flex-wrap: wrap;
+  gap: 16px;
   padding-left: 10%;
   padding-right: 10%;
   justify-content: flex-start;
   padding-top: 20px;
+}
+.back {
+  border-bottom: 5px solid teal;
+  border-right: 5px solid teal;
+  display: block;
+  height: 1vw;
+  margin: 10px;
+  transform: rotate(135deg);
+  width: 1vw;
+}
+.create-a-card {
+  word-wrap: break-word;
+  background-color: #fafbfc;
+  border: 1px solid #1b1f2326;
+  border-radius: 6px;
+  box-shadow: 0 1px 0 #1b1f230a, inset 0 1px 0 #ffffff40;
+  color: #24292e;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  height: auto;
+  line-height: 20px;
+  padding: 7px;
+  position: relative;
+  white-space: nowrap;
+  width: 125px;
+  align-self: center;
 }

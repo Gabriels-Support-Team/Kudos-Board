@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import "./CreateBoardForm.css";
+
 function CreateBoardForm({ onAddBoard, isOpen, close }) {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [imageURL, setImageURL] = useState("");
+  const [author, setAuthor] = useState("");
+
+  const categoryOptions = ["Celebration", "Thank you", "Inspiration"];
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const board = { title, category, imageURL };
+    const board = { title, category, author };
 
     try {
       const response = await fetch("http://localhost:3000/kudos/boards", {
@@ -21,12 +25,14 @@ function CreateBoardForm({ onAddBoard, isOpen, close }) {
         close();
         setTitle("");
         setCategory("");
+        setAuthor("");
         setImageURL("");
       }
     } catch (error) {
       console.error("Failed to create board:", error);
     }
   };
+
   if (!isOpen) return null;
 
   return (
@@ -44,17 +50,23 @@ function CreateBoardForm({ onAddBoard, isOpen, close }) {
           required
         />
         <label>Category</label>
-        <input
-          type="text"
+        <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
           required
-        />
+        >
+          <option value="">Select a category</option>
+          {categoryOptions.map((option, index) => (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
         <label>Author</label>
         <input
           type="text"
-          value={imageURL}
-          onChange={(e) => setImageURL(e.target.value)}
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
         />
         <button className="submit" type="submit">
           Create Board

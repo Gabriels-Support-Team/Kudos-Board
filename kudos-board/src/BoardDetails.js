@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import "./BoardDetails.css";
 import KudosCard from "./KudosCard";
 import CreateCardForm from "./CreateCardForm";
+import { Link } from "react-router-dom";
+
 function BoardDetails() {
   const [board, setBoard] = useState("");
   const [cards, setCards] = useState();
@@ -22,8 +24,13 @@ function BoardDetails() {
   };
   return (
     <div className="BoardDetails">
+      <Link to={`/`}>
+        <span className="back" />
+      </Link>{" "}
       <h3>{board.title}</h3>
-      <button onClick={() => setModalOpen(true)}>Create a Card</button>
+      <button className="create-a-card" onClick={() => setModalOpen(true)}>
+        Create a Card
+      </button>
       <CreateCardForm
         isOpen={modalOpen}
         close={() => {
@@ -42,6 +49,7 @@ function BoardDetails() {
             cardId={card.id}
             onDeleteCard={handleBoardChange}
             cardOwner={card.owner}
+            cardGifURL={card.gifURL}
           ></KudosCard>
         ))}
       </div>

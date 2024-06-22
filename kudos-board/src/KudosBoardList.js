@@ -3,18 +3,24 @@ import "./KudosBoardList.css";
 import KudosBoard from "./KudosBoard";
 import CreateBoardForm from "./CreateBoardForm";
 
-function KudosBoardList({ searchTerm, category }) {
+function KudosBoardList({ searchTerm, category, recent }) {
   const [boards, setBoards] = useState([]);
   const [error, setError] = useState(null);
   const [triggerFetch, setTriggerFetch] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    fetch(
-      `http://localhost:3000/kudos/boards?category=${encodeURIComponent(
-        category
-      )}`
-    )
+    // Create a URL object
+    const url = new URL("http://localhost:3000/kudos/boards");
+
+    // Use URLSearchParams to handle query parameters
+    const params = new URLSearchParams({
+      category: category,
+      sortBy: recent,
+    });
+    url.search = params.toString();
+
+    fetch(url.toString())
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch boards");
@@ -29,7 +35,7 @@ function KudosBoardList({ searchTerm, category }) {
         console.error("Error:", error);
         setError(error.toString());
       });
-  }, [triggerFetch, category]);
+  }, [triggerFetch, category, recent]);
   const handleBoardChange = () => {
     setTriggerFetch(true); // Set trigger to re-fetch boards
   };
@@ -62,6 +68,7 @@ function KudosBoardList({ searchTerm, category }) {
           boardTitle={board.title}
           boardImageURL={`https://picsum.photos/200/300?random=${board.id}`}
           onDeleteBoard={handleBoardChange}
+          boardAuthor={board?.author}
         />
       ))}
     </div>

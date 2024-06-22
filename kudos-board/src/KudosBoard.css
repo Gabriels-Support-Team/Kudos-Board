@@ -13,6 +13,47 @@
 }
 
 .CardImage {
-  width: 100%; /* Makes the image responsive */
+  width: 100%;
   height: auto;
+}
+
+.view-board {
+  background-color: #fafbfc;
+  border: 1px solid #1b1f2326;
+  box-shadow: 0 1px 0 #1b1f230a, inset 0 1px 0 #ffffff40;
+  color: #24292e;
+  padding: 6px 16px;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+}
+.delete-board {
+  background-color: teal;
+  border: 1px solid teal;
+  color: #fff;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+.button-common {
+  word-wrap: break-word;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 6px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  height: auto;
+  line-height: 20px;
+  list-style: none;
+  padding: 7px;
+  position: relative;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: auto;
+}
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

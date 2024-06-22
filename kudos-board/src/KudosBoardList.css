@@ -1,8 +1,8 @@
 .KudosBoardList {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap; /* Allows wrapping of cards if the container is too small */
-  gap: 16px; /* Adds space between cards */
+  flex-wrap: wrap;
+  gap: 16px;
   padding-left: 10%;
   padding-right: 10%;
   justify-content: flex-start;

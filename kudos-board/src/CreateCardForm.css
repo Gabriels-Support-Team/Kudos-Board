@@ -26,7 +26,8 @@
   z-index: 1001;
   display: flex;
   flex-direction: column;
-  overflow-y: auto; /* Enables vertical scrolling */
+  overflow-y: auto;
+  max-height: 80vh;
 }
 .submit {
   background-color: teal;

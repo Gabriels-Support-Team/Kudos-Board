@@ -1,9 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-// To allow all domains
 app.use(cors());
-// Or, to allow specific domains
 app.use(
   cors({
     origin: "http://localhost:3001",

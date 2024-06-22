@@ -1,12 +1,12 @@
 import React from "react";
 import "./Query.css";
-function Query({ setSearchTerm, setCategory }) {
+function Query({ setSearchTerm, setCategory, setRecent }) {
   return (
     <div className="sortAndFilter">
       <input
         type="text"
         onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="Search"
+        placeholder="Search Boards..."
         className="searchBar"
       />
 
@@ -16,6 +16,7 @@ function Query({ setSearchTerm, setCategory }) {
           className="button-common category-button"
           onClick={() => {
             setCategory("");
+            setRecent("asc");
           }}
         >
           All
@@ -23,6 +24,10 @@ function Query({ setSearchTerm, setCategory }) {
         <button
           // onClick={() => submitSearch(searchQuery)}
           className="button-common category-button"
+          onClick={() => {
+            setCategory("");
+            setRecent("desc");
+          }}
         >
           Recent
         </button>
@@ -53,7 +58,6 @@ function Query({ setSearchTerm, setCategory }) {
         >
           Inspiration
         </button>
-        <div className="center-button-container"></div>
       </div>
     </div>
   );

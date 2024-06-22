@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-// import "./CreateBoardForm.css";
+import GifSearch from "./GifSearch";
+import "./CreateCardForm.css";
 function CreateCardForm({ onAddBoard, isOpen, close, boardId }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -64,6 +65,7 @@ function CreateCardForm({ onAddBoard, isOpen, close, boardId }) {
           value={owner}
           onChange={(e) => setOwner(e.target.value)}
         />
+        <GifSearch setGifURL={setGifURL} gifURL={gifURL} />
         <label>gifURL</label>
         <input
           type="text"
