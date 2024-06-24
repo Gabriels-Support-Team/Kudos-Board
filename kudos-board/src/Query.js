@@ -12,7 +12,6 @@ function Query({ setSearchTerm, setCategory, setRecent }) {
 
       <div className="filters">
         <button
-          // onClick={() => submitSearch(searchQuery)}
           className="button-common category-button"
           onClick={() => {
             setCategory("");
@@ -22,7 +21,6 @@ function Query({ setSearchTerm, setCategory, setRecent }) {
           All
         </button>
         <button
-          // onClick={() => submitSearch(searchQuery)}
           className="button-common category-button"
           onClick={() => {
             setCategory("");
@@ -32,7 +30,6 @@ function Query({ setSearchTerm, setCategory, setRecent }) {
           Recent
         </button>
         <button
-          // onClick={() => submitSearch(searchQuery)}
           className="button-common category-button"
           onClick={() => {
             setCategory("Celebration");
@@ -41,7 +38,6 @@ function Query({ setSearchTerm, setCategory, setRecent }) {
           Celebration
         </button>
         <button
-          // onClick={() => submitSearch(searchQuery)}
           className="button-common category-button"
           onClick={() => {
             setCategory("Thank you");
@@ -50,7 +46,6 @@ function Query({ setSearchTerm, setCategory, setRecent }) {
           Thank you
         </button>
         <button
-          // onClick={() => submitSearch(searchQuery)}
           className="button-common category-button"
           onClick={() => {
             setCategory("Inspiration");

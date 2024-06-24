@@ -22,12 +22,9 @@ function KudosBoard({
         }
       );
       if (response.ok) {
-        console.log("Board deleted successfully");
         onDeleteBoard(); // Trigger re-fetch in parent component
       }
-    } catch (error) {
-      console.error("Failed to delete board:", error);
-    }
+    } catch (error) {}
   };
 
   return (

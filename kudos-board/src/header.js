@@ -1,9 +1,11 @@
-import "./header.css";
+import "./Header.css";
 function Header() {
   return (
-    <div className="headerContainer">
-      <img className="headerLogo" src="logo.png" alt="Logo" />
-    </div>
+    <header className="App-header">
+      <div className="headerContainer">
+        <img className="headerLogo" src="logo.png" alt="Logo" />
+      </div>
+    </header>
   );
 }
 

@@ -23,12 +23,9 @@ function KudosCard({
         }
       );
       if (response.ok) {
-        console.log("Card deleted successfully");
         onDeleteCard();
       }
-    } catch (error) {
-      console.error("Failed to delete Card:", error);
-    }
+    } catch (error) {}
   };
   const handleUpvote = async () => {
     try {

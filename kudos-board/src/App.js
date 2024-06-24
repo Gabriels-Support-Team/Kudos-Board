@@ -3,14 +3,12 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./HomePage";
 import BoardDetails from "./BoardDetails";
 import "./App.css";
-import Header from "./header";
+import Header from "./Header";
 
 function App() {
   return (
     <div>
-      <header className="App-header">
-        <Header></Header>
-      </header>
+      <Header />
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />

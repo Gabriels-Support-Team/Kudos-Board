@@ -32,7 +32,6 @@ function KudosBoardList({ searchTerm, category, recent }) {
         setBoards(data);
       })
       .catch((error) => {
-        console.error("Error:", error);
         setError(error.toString());
       });
   }, [triggerFetch, category, recent]);

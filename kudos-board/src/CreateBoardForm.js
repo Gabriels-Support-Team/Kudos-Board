@@ -8,8 +8,16 @@ function CreateBoardForm({ onAddBoard, isOpen, close }) {
   const [author, setAuthor] = useState("");
 
   const categoryOptions = ["Celebration", "Thank you", "Inspiration"];
+  const newBoard = () => {
+    onAddBoard(); // Trigger re-fetch in parent component
+    close(); // Close the form/modal
+    setTitle(""); // Reset title state
+    setCategory(""); // Reset category state
+    setAuthor(""); // Reset author state
+    setImageURL(""); // Reset image URL state
+  };
 
-  const handleSubmit = async (event) => {
+  const CreateBoard = async (event) => {
     event.preventDefault();
     const board = { title, category, author };
 
@@ -20,24 +28,18 @@ function CreateBoardForm({ onAddBoard, isOpen, close }) {
         body: JSON.stringify(board),
       });
       if (response.ok) {
-        console.log("Board created successfully");
-        onAddBoard(); // Trigger re-fetch in parent component
-        close();
-        setTitle("");
-        setCategory("");
-        setAuthor("");
-        setImageURL("");
+        newBoard();
       }
-    } catch (error) {
-      console.error("Failed to create board:", error);
-    }
+    } catch (error) {}
   };
 
-  if (!isOpen) return null;
+  if (!isOpen) {
+    return null;
+  }
 
   return (
     <div className="modal-overlay">
-      <form className="modal-content" onSubmit={handleSubmit}>
+      <form className="modal-content" onSubmit={CreateBoard}>
         <button className="modalClose" onClick={close}>
           X
         </button>
@@ -46,13 +48,13 @@ function CreateBoardForm({ onAddBoard, isOpen, close }) {
         <input
           type="text"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(e) => setTitle(e?.target?.value)}
           required
         />
         <label>Category</label>
         <select
           value={category}
-          onChange={(e) => setCategory(e.target.value)}
+          onChange={(e) => setCategory(e?.target?.value)}
           required
         >
           <option value="">Select a category</option>
@@ -66,7 +68,7 @@ function CreateBoardForm({ onAddBoard, isOpen, close }) {
         <input
           type="text"
           value={author}
-          onChange={(e) => setAuthor(e.target.value)}
+          onChange={(e) => setAuthor(e?.target?.value)}
         />
         <button className="submit" type="submit">
           Create Board

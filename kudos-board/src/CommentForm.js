@@ -21,13 +21,10 @@ function CommentForm({ cardId, setComments, onDeleteCard }) {
         return response.json();
       })
       .then((data) => {
-        console.log("Comment added:", data);
         setComment(""); // Clear the input after successful submission
         onDeleteCard();
       })
-      .catch((error) => {
-        console.error("Failed to add comment:", error);
-      });
+      .catch((error) => {});
   };
 
   return (

@@ -24,7 +24,6 @@ function CreateCardForm({ onAddBoard, isOpen, close, boardId }) {
         body: JSON.stringify(card),
       });
       if (response.ok) {
-        console.log("Board created successfully");
         onAddBoard(); // Trigger re-fetch in parent component
         close();
         setTitle("");
@@ -36,8 +35,9 @@ function CreateCardForm({ onAddBoard, isOpen, close, boardId }) {
       console.error("Failed to create board:", error);
     }
   };
-  if (!isOpen) return null;
-
+  if (!isOpen) {
+    return null;
+  }
   return (
     <div className="modal-overlay">
       <form className="modal-content" onSubmit={handleSubmit}>
@@ -49,28 +49,28 @@ function CreateCardForm({ onAddBoard, isOpen, close, boardId }) {
         <input
           type="text"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(e) => setTitle(e?.target?.value)}
           required
         />
         <label>description</label>
         <input
           type="text"
           value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={(e) => setDescription(e?.target?.value)}
           required
         />
         <label>owner</label>
         <input
           type="text"
           value={owner}
-          onChange={(e) => setOwner(e.target.value)}
+          onChange={(e) => setOwner(e?.target?.value)}
         />
         <GifSearch setGifURL={setGifURL} gifURL={gifURL} />
         <label>gifURL</label>
         <input
           type="text"
           value={gifURL}
-          onChange={(e) => setGifURL(e.target.value)}
+          onChange={(e) => setGifURL(e?.target?.value)}
         />
         <button className="submit" type="submit">
           Create Card

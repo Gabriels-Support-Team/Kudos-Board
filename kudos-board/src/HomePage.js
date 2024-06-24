@@ -1,5 +1,4 @@
 import "./HomePage.css";
-import Header from "./header";
 import Query from "./Query";
 import KudosBoardlist from "./KudosBoardList";
 import React, { useState } from "react";
